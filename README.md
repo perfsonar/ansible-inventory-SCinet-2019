@@ -26,17 +26,8 @@ ansible-galaxy install -r  requirements.yml --ignore-errors
 git clone git@github.com:perfsonar/ansible-inventory-SCinet-2019.git
 ```
 
-4.  Use Ansible ping to verify connectivity to targets.
-
-```
-ansible \
-  --ask-pass \
-  --ask-become-pass  \
-  -i ansible-inventory-SCinet-2019/inventory \
-  all -m ping
-```
-
-5. Provision perfSONAR infrastructure
+4. Provision perfSONAR infrastructure.  Optionally use Ansible's 'ping' to
+   test connectivity first.
 
 ```
 ansible-playbook \
@@ -46,7 +37,7 @@ ansible-playbook \
   perfsonar.yml
 ```
 
-6. Provision local changes to perfSONAR infrastructure
+5. Provision local changes to perfSONAR infrastructure
 
 ```
 ansible-playbook \
@@ -59,6 +50,16 @@ ansible-playbook \
 ---
 
 ** Some useful commands to troubleshoot the environment **
+
+Use Ansible ping to verify connectivity to targets.
+
+```
+ansible \
+  --ask-pass \
+  --ask-become-pass  \
+  -i ansible-inventory-SCinet-2019/inventory \
+  all -m ping
+```
 
 Manage PWA users:
 ```
