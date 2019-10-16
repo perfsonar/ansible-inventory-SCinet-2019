@@ -56,7 +56,9 @@ ansible-playbook \
   ansible-inventory-SCinet-2019/playbooks/perfsonar.yml
 ```
 
-7. Some useful commands to troubleshoot the environment
+---
+
+** Some useful commands to troubleshoot the environment **
 
 Manage PWA users:
 ```
