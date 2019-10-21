@@ -32,8 +32,6 @@ git clone git@github.com:perfsonar/ansible-inventory-SCinet-2019.git
 ```
 ansible-playbook \
   -i ansible-inventory-SCinet-2019/inventory \
-  --ask-pass \
-  --ask-become-pass  \
   perfsonar.yml
 ```
 
@@ -42,8 +40,6 @@ ansible-playbook \
 ```
 ansible-playbook \
   -i ansible-inventory-SCinet-2019/inventory \
-  --ask-pass \
-  --ask-become-pass  \
   ansible-inventory-SCinet-2019/playbooks/perfsonar.yml
 ```
 
@@ -55,43 +51,20 @@ Use Ansible ping to verify connectivity to targets.
 
 ```
 ansible \
-  --ask-pass \
-  --ask-become-pass  \
   -i ansible-inventory-SCinet-2019/inventory \
   all -m ping
 ```
 
-Manage PWA users:
+Display auth interfaces on Archivers:
 ```
-vi ansible-inventory-SCinet-2019/inventory/group_vars/all/perfsonar/ps_pwa.yml
-ansible-playbook \
+ansible ps-archives \
   -i ansible-inventory-SCinet-2019/inventory \
-  --ask-pass --ask-become-pass  \
-  --limit 'ps-psconfig-web-admin' --tags 'ps::pwa_users'\
-  perfsonar.yml
+  -a "/usr/sbin/esmond_manage list_user_ip_address"
 ```
 
-Display PWA users:
+Delete an auth interface on Archivers:
 ```
-ansible ps-psconfig-web-admin \
+ansible ps-archives \
   -i ansible-inventory-SCinet-2019/inventory \
-  --ask-pass --ask-become-pass  \
-  -a "docker exec -it sca-auth pwa_auth listuser --short"
-```
-
-Reset Password for PWA user from the command line:
-```
-ansible ps-psconfig-web-admin \
-  -i ansible-inventory-SCinet-2019/inventory \
-  --ask-pass --ask-become-pass  \
-  -a "docker exec -it sca-auth pwa_auth setpass \
-  --username user --password x"
-```
-
-Reset Password for PWA user interactively:
-```
-ansible-playbook \
-  -i ansible-inventory-SCinet-2019/inventory \
-  --ask-pass --ask-become-pass  \
-  roles/ansible-role-perfsonar-psconfig-web-admin/playbooks/pwa_passwd_reset.yml
+  -a "/usr/sbin/esmond_manage delete_user_ip_address USERNAME IPADDR"
 ```
