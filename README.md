@@ -23,7 +23,7 @@ ansible-galaxy install -r  requirements.yml --ignore-errors
 3.  add this repository to the perfSONAR Ansible playbook
 
 ```
-git clone git@github.com:perfsonar/ansible-inventory-SCinet-2019.git
+git clone https://github.com:perfsonar/ansible-inventory-SCinet-2019.git
 ```
 
 4. Provision perfSONAR infrastructure.  Optionally use Ansible's 'ping' to
