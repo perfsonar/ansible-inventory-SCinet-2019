@@ -11,7 +11,7 @@
 #perfsonar_os_update: True
 #perfsonar_os_update: False
 #
-perfsonar_os_update: True
+perfsonar_os_update: False
 
 # The perfSONAR repository you want to use on your systems
 # Can be any of release, staging or snapshot for Debian/Ubuntu systems

@@ -14,6 +14,7 @@ perfsonar_optional_packages:
   - perfsonar-toolkit-servicewatcher
   - perfsonar-toolkit-sysctl
   - perfsonar-toolkit-systemenv-testpoint
+  - pscheduler-tool-nmapreach
 
 # List of NTP servers you want to use on your perfSONAR hosts
 # If empty, any already configured NTP server will not be changed
@@ -50,10 +51,10 @@ perfsonar_disable_root_ssh: True
 perfsonar_psconfig_remote_remotes: []
 
 # setting the perfsonar_archive-* variables will register testpoints with the archivers
-perfsonar_archive_auth_interfaces: []
-#  - "{{ ansible_all_ipv4_addresses }}"
-perfsonar_archive_hosts: []
-#  - "{{ groups['ps-archives'] }}"
+perfsonar_archive_auth_interfaces:
+  - "{{ ansible_all_ipv4_addresses }}"
+perfsonar_archive_hosts:
+  - "{{ groups['ps-archives'] }}"
 perfsonar_archive_uid: perfsonar
 
 #####
